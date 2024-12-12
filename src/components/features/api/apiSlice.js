@@ -3,7 +3,7 @@ import { userLoggedIn, userLoggedOut } from '../auth/authSlice';
 
 const baseQuery = fetchBaseQuery({
     baseUrl: 'http://localhost:5000/api/v1',
-    tagTypes: ['Vocabulary'],
+    tagTypes: ['Vocabulary', 'Lesson', 'Vocabularies'],
     prepareHeaders: (headers, { getState }) => {
         const token = getState().auth.accessToken;
         if (token) {

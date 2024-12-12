@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Confetti from "react-confetti";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import Footer from "../Footer";
 import Navbar from "../Navbar/Nabar";
 import Loading from "../common/Loading";
@@ -22,8 +23,6 @@ const LessonPage = () => {
   console.log(error);
   let content = null;
 
-  //   if (isError) return <p>Error loading vocabulary data.</p>;
-
   const vocabularies = vocabularyData?.data || [];
   const currentVocabulary = vocabularies[currentVocabularyIndex];
 
@@ -41,6 +40,7 @@ const LessonPage = () => {
 
   const handleCompleteLesson = () => {
     setShowConfetti(true);
+    toast.success("Great! You have been Completed this Lesson");
     setTimeout(() => {
       setShowConfetti(false);
       navigate("/");
@@ -53,7 +53,7 @@ const LessonPage = () => {
     content = <Loading />;
   }
   if (!isLoading && isError) {
-    content = content = (
+    content = (
       <div className="grid grid-cols-1  lg:grid-cols-3 justify-end gap-10 lg:h-full">
         <div className="lg:col-span-2 flex items-center justify-center bg-white p-6 rounded-md shadow-md">
           <p className="text-red-500">{error?.data?.message}</p>;
@@ -61,10 +61,10 @@ const LessonPage = () => {
       </div>
     );
   }
-  if (!isLoading && !isError && vocabularyData.data.length === 0) {
+  if (!isLoading && !isError && vocabularyData?.data.length === 0) {
     content = <div className="text-red-500">There Have no Vocabularies!!</div>;
   }
-  if (!isLoading && !isError && vocabularyData.data.length > 0) {
+  if (!isLoading && !isError && vocabularyData?.data.length > 0) {
     content = (
       <div className="grid grid-cols-1  lg:grid-cols-3 gap-10 lg:h-full">
         {currentVocabulary && (

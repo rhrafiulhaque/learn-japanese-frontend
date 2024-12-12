@@ -25,7 +25,7 @@ const Navbar = () => {
 
       <div className="flex gap-6">
         <h1 className="px-4 py-2 rounded hover:bg-primary hover:text-white transition-colors">
-          <button>Lessons</button>
+          <button onClick={() => navigate("/lesson")}>Lessons</button>
         </h1>
         <h1 className="px-4 py-2 rounded hover:bg-primary hover:text-white transition-colors">
           <button>Tutorials</button>

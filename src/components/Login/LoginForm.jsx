@@ -25,15 +25,15 @@ const LoginForm = () => {
     try {
       const result = await login(formData).unwrap();
       console.log(result);
-      // if (result.status === "success") {
-      //   if (formData.admin) {
-      //     toast.success("Welcome to Admin Panel");
-      //     navigate("/admin/dashboard");
-      //   } else {
-      //     toast.success("Welcome to Learn Japanese..");
-      //     navigate("/");
-      //   }
-      // }
+      if (result.success === true) {
+        if (result.data.user.role === "admin") {
+          toast.success("Welcome to Admin Panel");
+          navigate("/admin/dashboard");
+        } else {
+          toast.success("Welcome to Learn Japanese..");
+          navigate("/");
+        }
+      }
     } catch (error) {
       const errorMessage = error?.data?.message || "Unable to log in!";
       toast.error(errorMessage);

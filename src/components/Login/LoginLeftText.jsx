@@ -6,7 +6,7 @@ const LoginLeftText = () => {
       <div className="text-white">
         <img src={LoginPagePicture} alt="Illustration" className="mx-auto" />
 
-        <h2 className="text-3xl font-bold mb-4">Sign in Now</h2>
+        <h2 className="text-3xl font-bold mb-4">Login Now</h2>
         <p className="text-xl mb-4">
           Learn Japanese: A Journey from Beginner to Fluent Speaker
         </p>

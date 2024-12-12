@@ -4,7 +4,12 @@ import { apiSlice } from "../api/apiSlice";
 export const lessonApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getAllLessons: builder.query({
-            query: () => '/lesson'
+            query: () => '/lesson',
+            providesTags: ['Lesson']
+        }),
+        getAllVocabularies: builder.query({
+            query: () => '/vocabulary',
+            providesTags: ['Vocabularies']
         }),
         getLessonByLessonNo: builder.query({
             query: (lessonNo) => `/vocabulary/${lessonNo}`,
@@ -14,4 +19,4 @@ export const lessonApi = apiSlice.injectEndpoints({
     })
 })
 
-export const { useGetAllLessonsQuery, useGetLessonByLessonNoQuery } = lessonApi
+export const { useGetAllLessonsQuery, useGetLessonByLessonNoQuery, useGetAllVocabulariesQuery } = lessonApi

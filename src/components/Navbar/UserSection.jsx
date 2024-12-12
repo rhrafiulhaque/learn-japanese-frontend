@@ -7,7 +7,7 @@ const UserSection = () => {
   return (
     <div className="text-center mb-12">
       <img
-        src={avatar}
+        src={user.profilePhoto === null ? avatar : user.profilePhoto}
         alt="Profile Picture"
         className="w-32 h-32 rounded-full border-4 border-primary mx-auto mb-4 object-cover"
       />
