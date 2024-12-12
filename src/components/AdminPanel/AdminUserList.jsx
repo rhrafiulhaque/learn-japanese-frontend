@@ -80,7 +80,7 @@ const AdminUserList = () => {
 
         <tbody className="whitespace-nowrap">
           {users.data.map((user, index) => (
-            <tr className="even:bg-blue-50">
+            <tr key={user._id} className="even:bg-blue-50">
               <td className="p-4 text-sm text-black">{index + 1}</td>
               <td className="p-4 text-sm text-black">{user.name}</td>
               <td className="p-4 text-sm text-black">{user.email}</td>

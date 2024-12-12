@@ -14,7 +14,6 @@ const AdminVocabularyList = () => {
     isError,
     error,
   } = useGetAllVocabulariesQuery();
-  console.log(vocabularies?.data);
   const [deleteByAdminVocabulary, { isLoading: deleteVocabularyLoading }] =
     useDeleteByAdminVocabularyMutation();
   const dispatch = useDispatch();

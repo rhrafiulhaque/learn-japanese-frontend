@@ -1,4 +1,9 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 import "./App.css";
 import AdminCreateLesson from "./components/AdminPanel/AdminCreateLesson";
 import AdminCreateVocubulary from "./components/AdminPanel/AdminCreateVocubulary";
@@ -14,38 +19,74 @@ import LoginPage from "./components/Login/LoginPage";
 import Homepage from "./components/Navbar/HomePage";
 import Navbar from "./components/Navbar/Nabar";
 import RegistrationPage from "./components/Register/RegistrationPage";
+import Loading from "./components/common/Loading";
+import NotAuthorize from "./components/common/NotAuthorize";
+import NotFound from "./components/common/NotFound";
+import AdminRoute from "./components/route/AdminRoute";
+import PrivateRoute from "./components/route/PrivateRoute";
+import useAuth from "./hooks/useAuth";
 import useAuthCheck from "./hooks/useAuthCheck";
 
 function App() {
   const authChecked = useAuthCheck();
-  return !authChecked ? (
-    <div>Auth Checking</div>
-  ) : (
+  const user = useAuth();
+  if (!authChecked) {
+    return <Loading />;
+  }
+
+  return (
     <Router>
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/lesson/:lessonNo" element={<LessonPage />} />
         <Route
-          path="/lesson"
+          path="/"
           element={
-            <div className="container mx-auto pt-2">
-              <Navbar />
-              <LessonBoard />
-              <Footer />
-            </div>
+            user?.role === "admin" ? (
+              <Navigate to="/admin/dashboard" />
+            ) : user?.role === "user" ? (
+              <Navigate to="/homepage" />
+            ) : (
+              <Navigate to="/login" />
+            )
           }
         />
+
+        {/* Public Routes */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
 
-        <Route path="/admin" element={<Layout />}>
-          <Route path="dashboard" element={<AdminDashboard />} />
-          <Route path="create-lesson" element={<AdminCreateLesson />} />
-          <Route path="create-vocabulary" element={<AdminCreateVocubulary />} />
-          <Route path="lessonlist" element={<AdminLessonList />} />
-          <Route path="userlist" element={<AdminUserList />} />
-          <Route path="vocabularylist" element={<AdminVocabularyList />} />
+        {/* Private Routes */}
+        <Route element={<PrivateRoute />}>
+          <Route path="/homepage" element={<Homepage />} />
+          <Route
+            path="/lesson"
+            element={
+              <div className="container mx-auto pt-2">
+                <Navbar />
+                <LessonBoard />
+                <Footer />
+              </div>
+            }
+          />
+          <Route path="/lesson/:lessonNo" element={<LessonPage />} />
         </Route>
+
+        {/* Admin Routes */}
+        <Route element={<AdminRoute />}>
+          <Route path="/admin" element={<Layout />}>
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="create-lesson" element={<AdminCreateLesson />} />
+            <Route
+              path="create-vocabulary"
+              element={<AdminCreateVocubulary />}
+            />
+            <Route path="lessonlist" element={<AdminLessonList />} />
+            <Route path="userlist" element={<AdminUserList />} />
+            <Route path="vocabularylist" element={<AdminVocabularyList />} />
+          </Route>
+        </Route>
+
+        <Route path="/notauthorized" element={<NotAuthorize />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

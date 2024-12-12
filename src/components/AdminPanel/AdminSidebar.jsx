@@ -6,16 +6,16 @@ import useAuth from "../../hooks/useAuth";
 import { userLoggedOut } from "../features/auth/authSlice";
 
 const AdminSideBar = ({ showMobileMenu, setShowMobileMenu }) => {
-  const { name } = useAuth();
+  const { name, profilePhoto } = useAuth();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const logOut = () => {
+  const logOut = async () => {
     localStorage.clear();
-    dispatch(userLoggedOut());
-    navigate("/login");
+    await dispatch(userLoggedOut());
+    await navigate("/login");
   };
 
   const isActive = (path) => pathname === path;
@@ -132,7 +132,7 @@ const AdminSideBar = ({ showMobileMenu, setShowMobileMenu }) => {
       </nav>
       <div className="mt-auto flex items-center">
         <img
-          src={avatar}
+          src={profilePhoto === null ? avatar : profilePhoto}
           alt={name}
           className="w-10 h-10 rounded-full mr-3 object-cover"
         />
