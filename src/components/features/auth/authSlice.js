@@ -20,7 +20,7 @@ const authSlice = createSlice({
             state.accessToken = null,
                 state.refreshToken = null,
                 state.user = null
-        }
+        },
     }
 })
 export default authSlice.reducer;

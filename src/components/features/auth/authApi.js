@@ -46,7 +46,21 @@ export const authApi = apiSlice.injectEndpoints({
             }
 
         }),
+        getAllUsers: builder.query({
+            query: () => '/user/allusers',
+            providesTags: ['Users']
+        }),
+        updateUserRole: builder.mutation({
+            query: ({ userId, data }) => ({
+                url: `/user/update-user-role/${userId}`,
+                method: "PATCH",
+                body: data
+            }),
+            invalidatesTags: ['Users']
+        }),
+
+
     })
 })
 
-export const { useLoginMutation, useSignupMutation } = authApi
+export const { useLoginMutation, useSignupMutation, useGetAllUsersQuery, useUpdateUserRoleMutation } = authApi
