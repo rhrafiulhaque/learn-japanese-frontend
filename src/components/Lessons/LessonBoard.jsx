@@ -19,9 +19,11 @@ const LessonBoard = () => {
   if (!isLoading && !isError && lessons?.data.length > 0) {
     content = (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {lessons?.data.map((lesson) => (
-          <SingleLessonCard key={lesson._id} lesson={lesson} />
-        ))}
+        {[...lessons.data]
+          .sort((a, b) => a.lessonNumber - b.lessonNumber)
+          .map((lesson) => (
+            <SingleLessonCard key={lesson._id} lesson={lesson} />
+          ))}
       </div>
     );
   }

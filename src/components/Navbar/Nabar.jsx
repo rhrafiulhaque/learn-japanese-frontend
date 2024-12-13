@@ -28,7 +28,7 @@ const Navbar = () => {
           <button onClick={() => navigate("/lesson")}>Lessons</button>
         </h1>
         <h1 className="px-4 py-2 rounded hover:bg-primary hover:text-white transition-colors">
-          <button>Tutorials</button>
+          <button onClick={() => navigate("/tutorials")}>Tutorials</button>
         </h1>
       </div>
 

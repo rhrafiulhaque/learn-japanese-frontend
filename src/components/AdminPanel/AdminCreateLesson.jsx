@@ -51,7 +51,7 @@ const AdminCreateLesson = () => {
         if (result.success === true) {
           toast.success("Lesson Added Successfully");
           dispatch(clearSelectedLesson());
-          navigate(`/admin/dashboard`);
+          navigate(`/admin/lessonlist`);
         }
       }
     } catch (error) {

@@ -107,6 +107,36 @@ const AdminSideBar = ({ showMobileMenu, setShowMobileMenu }) => {
           <li>
             <div
               onClick={() => {
+                navigate("/admin/create-tutorial");
+                setShowMobileMenu(false);
+              }}
+              className={`block cursor-pointer py-2 px-4 rounded-lg text-gray-100 hover:bg-gray-100 hover:text-primary  ${
+                isActive("/admin/create-tutorial")
+                  ? "bg-gray-100 text-primary"
+                  : ""
+              }  `}
+            >
+              Add Tutorial
+            </div>
+          </li>
+          <li>
+            <div
+              onClick={() => {
+                navigate("/admin/tutoriallist");
+                setShowMobileMenu(false);
+              }}
+              className={`block cursor-pointer py-2 px-4 rounded-lg text-gray-100 hover:bg-gray-100 hover:text-primary  ${
+                isActive("/admin/tutoriallist")
+                  ? "bg-gray-100 text-primary"
+                  : ""
+              }  `}
+            >
+              Tutorial List
+            </div>
+          </li>
+          <li>
+            <div
+              onClick={() => {
                 navigate("/admin/userlist");
                 setShowMobileMenu(false);
               }}

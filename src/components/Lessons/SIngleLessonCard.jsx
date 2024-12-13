@@ -9,7 +9,7 @@ const SingleLessonCard = ({ lesson }) => {
       <div className="rounded-lg overflow-hidden flex flex-col items-center justify-center shadow-lg hover:shadow-xl transition-shadow max-h-[450px] cursor-pointer group relative">
         <div className="group-hover:scale-105   absolute transition-all text-white  text-center top-1/2 -translate-y-1/2 px-4">
           <p className="mt-2 text-lg">Lesson No- {lessonNumber}</p>
-          <h1 className=" text-5xl">{lessonName}</h1>
+          <h1 className=" text-3xl">{lessonName}</h1>
         </div>
         <img
           src={lessonBackground}
