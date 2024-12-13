@@ -25,6 +25,12 @@ const Vocabulary = ({
           <AiFillSound />
         </p>
       </div>
+      <p className="text-sm text-red-500">
+        [You can listen to the perfect pronunciation of the Japanese word by
+        clicking on the word or the soundbar icon. After pressing the soundbar
+        icon, please wait for 2-3 seconds. You will then hear the perfect
+        pronunciation ]
+      </p>
       <p className="text-xl text-gray-600 mb-2">
         <strong>Pronunciation:</strong> {pronunciation}
       </p>

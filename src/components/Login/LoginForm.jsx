@@ -24,7 +24,7 @@ const LoginForm = () => {
   const submitForm = async (formData) => {
     try {
       const result = await login(formData).unwrap();
-      console.log(result);
+
       if (result.success === true) {
         if (result.data.user.role === "admin") {
           toast.success("Welcome to Admin Panel");

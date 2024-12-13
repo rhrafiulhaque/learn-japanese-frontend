@@ -22,7 +22,6 @@ const AdminTutorialList = () => {
   const navigate = useNavigate();
 
   const handleEditTutorial = (tutorial) => {
-    console.log(tutorial);
     dispatch(setSelectedTutorial(tutorial));
     navigate("/admin/create-tutorial");
   };

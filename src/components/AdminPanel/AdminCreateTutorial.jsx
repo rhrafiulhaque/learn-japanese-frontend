@@ -17,7 +17,7 @@ const AdminCreateTutorial = () => {
   const selectedTutorial = useSelector(
     (state) => state.tutorial.selectedTutorial
   );
-  console.log(selectedTutorial);
+
   const isEditMode = !!selectedTutorial;
   const [addByAdminTutorial, { data: tutorial, isLoading: tutorialLoading }] =
     useAddByAdminTutorialMutation();

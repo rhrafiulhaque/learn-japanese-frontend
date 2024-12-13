@@ -37,7 +37,7 @@ const RegistrationForm = () => {
     }
 
     try {
-      console.log([...dataToSubmit.entries()]);
+    
       const result = await signup(dataToSubmit).unwrap();
       if (result.success) {
         toast.success("Registration Successful. Please Login with Credentials");

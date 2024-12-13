@@ -20,7 +20,7 @@ const LessonPage = () => {
     isError,
     error,
   } = useGetLessonByLessonNoQuery(lessonNo);
-  console.log(error);
+
   let content = null;
 
   const vocabularies = vocabularyData?.data || [];

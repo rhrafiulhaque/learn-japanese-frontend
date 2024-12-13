@@ -3,11 +3,8 @@ import { Link } from "react-router-dom";
 function SingleTutorial({ tutorial }) {
   const { tutorialLink, tutorialTitle, _id } = tutorial || {};
 
-  // Extract the YouTube video ID from the tutorialLink
   const videoId = tutorialLink.split("/").pop();
-  console.log(videoId);
 
-  // Generate the YouTube thumbnail URL
   const thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 
   return (

@@ -199,7 +199,6 @@ const AdminCreateVocubulary = () => {
                     <option
                       key={lesson._id}
                       value={lesson.lessonNumber}
-                      // Check if the lessonNumber matches the selected vocabulary's lessonNumber
                       selected={
                         lesson.lessonNumber === selectedVocubulary?.lessonNumber
                       }
