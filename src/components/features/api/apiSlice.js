@@ -3,9 +3,9 @@ import { userLoggedIn, userLoggedOut } from '../auth/authSlice';
 
 const baseQuery = fetchBaseQuery({
     //Local Host
-    baseUrl: 'http://localhost:5000/api/v1',
+    // baseUrl: 'http://localhost:5000/api/v1',
     //Production
-    // baseUrl: 'https://learn-japanese-backeend.vercel.app/api/v1',
+    baseUrl: 'https://learn-japanese-backeend.vercel.app/api/v1',
     tagTypes: ['Vocabulary', 'Lesson', 'Vocabularies', 'Users', 'Tutorial'],
     prepareHeaders: (headers, { getState }) => {
         const token = getState().auth.accessToken;
